@@ -25,9 +25,14 @@ train_op = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
 
 with tf.Session() as sess:
     tf.global_variables_initializer().run()
-    for i in range(100):
+    for i in range(1):
         for (x,y) in zip(trX,trY):
             sess.run(train_op,feed_dict ={X:x,Y:y})
-        print (i+1)
-        print(sess.run(w))
-        print (sess.run(b))
+            print ("-----------------")
+            print (i+1)
+            print(sess.run(cost,feed_dict={X:x,Y:y}))
+        
+            print("w = %f"%sess.run(w))
+            print ("b=%f"%sess.run(b))
+        
+
